@@ -7,6 +7,44 @@
 	</head>
 
 	<body>
-		<div id="app"></div>
+		<div id="app">
+			<h1>ToDo App</h1>
+			<div class="todo-wrapper">
+				<h2>Lista zadań</h2>
+				<div>
+					<ul id="task-to-do"> </ul>
+				</div>
+				<div>
+					<ul id="done-task"> </ul>
+				</div>
+			</div>
+
+			<form class="form">
+				<div class="input-wrapper">
+					<label class="label" for="title">Tytuł zadania</label>
+					<input class="input" name="title" id="title" type="text" />
+				</div>
+				<div class="input-wrapper">
+					<label class="label" for="description">Tytuł zadania</label>
+					<textarea
+						class="input textarea"
+						id="description"
+						name="description"
+					></textarea>
+				</div>
+				<div class="input-wrapper">
+					<label class="label" for="dateToEnd">
+						Data do kiedy zadanie musi zostać wykonane</label
+					>
+					<input
+						class="input"
+						name="dateToEnd"
+						id="dateToEnd"
+						type="datetime-local"
+					/>
+				</div>
+				<button>Dodaj zadanie</button>
+			</form>
+		</div>
 	</body>
 </html>
