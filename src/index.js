@@ -1,5 +1,5 @@
 import "./scss/index.scss";
-import { TodoList } from "./js/index.js";
+import { TodoList } from "./js/TodoList.js";
 
 class Application {
 	form;
@@ -27,7 +27,8 @@ class Application {
 		const values = {};
 		for (let item of items) {
 			if (!item.name) break;
-			values[item.name] = item.value;
+			if (item.type === "checkbox") values[item.name] = item.checked;
+			else values[item.name] = item.value;
 		}
 		return values;
 	}

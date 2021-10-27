@@ -21,6 +21,8 @@ class TodoList {
 	addTodo(data) {
 		const todo = Todo.create(data);
 		this.todos.push(todo);
+		this.saveTodoToLocalStorage();
+		this.todoListView.update(this.todos);
 	}
 
 	deleteTodo(id) {
@@ -33,7 +35,7 @@ class TodoList {
 	}
 
 	getSavedTodos() {
-		if (!isTodosLocalStorageExists) return;
+		if (!this.isTodosLocalStorageExists) return;
 		const todosString = localStorage.getItem("todos");
 		const todos = JSON.parse(todosString);
 		this.todos = todos;
