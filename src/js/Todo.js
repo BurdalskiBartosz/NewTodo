@@ -1,10 +1,17 @@
 class Todo {
-	state = false;
+	state = null;
 	data = {
 		title: "",
 		description: "",
 		dateToEnd: ""
 	};
+
+	constructor(data) {
+		this.state = data.state;
+		this.title = data.title;
+		this.description = data.description;
+		this.dateToEnd = data.dateToEnd;
+	}
 
 	edit(data) {
 		this.data = {
