@@ -27,7 +27,6 @@ class Application {
 		const values = {};
 		for (let item of items) {
 			if (!item.name) break;
-			if (item.type === "checkbox") values[item.name] = item.checked;
 			else values[item.name] = item.value;
 		}
 		return values;

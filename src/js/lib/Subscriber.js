@@ -1,4 +1,4 @@
-class Subscriber {
+class Subject {
 	constructor() {
 		this.subscribers = [];
 	}
@@ -16,4 +16,4 @@ class Subscriber {
 	}
 }
 
-export { Subscriber };
+export { Subject };

@@ -2,24 +2,16 @@ class TodoListView {
 	constructor() {
 		this.toDoListWrapper = document.querySelector("#task-to-do");
 		this.doneListWrapper = document.querySelector("#done-task");
+		this.doneTasksList = [];
 	}
 
 	create(todos) {
-		console.log(todos);
 		todos.forEach((todo) => this.addToList(todo));
 	}
 
 	addToList(todo) {
-		const todoState = todo.state;
-		if (todoState) {
-			const wrapper = document.createElement("div");
-			wrapper.innerHTML = `<div>${todo.title}</div>`;
-			this.doneListWrapper.appendChild(wrapper);
-		} else {
-			const wrapper = document.createElement("div");
-			wrapper.innerHTML = `<div>${todo.title}</div>`;
-			this.toDoListWrapper.appendChild(wrapper);
-		}
+		const html = this.createHTML(todo);
+		this.toDoListWrapper.appendChild(html);
 	}
 
 	update(todos) {
@@ -28,7 +20,19 @@ class TodoListView {
 		this.create(todos);
 	}
 
-	createHTML(data) {}
+	createHTML(todo) {
+		console.log(todo);
+		const wrapper = document.createElement("div");
+		wrapper.innerHTML = `<div class="todo">
+			<h3 class="todo-title">${todo.title}</h3>
+			<div class="todo-buttons buttons">
+				<button class="buttons-button edit-button">Edytuj</button>
+				<button class="buttons-button delete-button">Usuń</button>
+			</div>
+		</div>`;
+
+		return wrapper;
+	}
 }
 
 export { TodoListView };

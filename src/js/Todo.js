@@ -7,7 +7,7 @@ class Todo {
 	};
 
 	constructor(data) {
-		this.state = data.state;
+		this.id = Math.random().toString(16).slice(2);
 		this.title = data.title;
 		this.description = data.description;
 		this.dateToEnd = data.dateToEnd;
@@ -18,6 +18,10 @@ class Todo {
 			...this.data,
 			...data
 		};
+	}
+
+	delete() {
+		this.state = "deleted";
 	}
 
 	changeState() {
