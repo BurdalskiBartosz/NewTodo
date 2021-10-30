@@ -19,7 +19,7 @@ class TodoList {
 	}
 
 	addTodo(data) {
-		const todo = Todo.create(data);
+		const todo = Todo.create(data, false, this);
 		this.todos.push(todo);
 		this.saveTodoToLocalStorage();
 		this.todoListView.update(this.todos);
@@ -28,17 +28,29 @@ class TodoList {
 	deleteTodo(id) {
 		const todoId = this.todos.findIndex((todo) => todo.id === id);
 		this.todos.splice(todoId, 1);
+		this.todoListView.update(this.todos);
+		this.saveTodoToLocalStorage();
 	}
 
 	saveTodoToLocalStorage() {
-		localStorage.setItem("todos", JSON.stringify(this.todos));
+		const todoData = this.todos.map((todo) => ({
+			state: todo.state,
+			data: {
+				title: todo.title,
+				description: todo.description,
+				dateToEnd: todo.dateToEnd
+			}
+		}));
+		localStorage.setItem("todos", JSON.stringify(todoData));
 	}
 
 	getSavedTodos() {
 		if (!this.isTodosLocalStorageExists) return;
 		const todosString = localStorage.getItem("todos");
 		const todos = JSON.parse(todosString);
-		this.todos = todos;
+		this.todos = todos.map((todo) =>
+			Todo.create(todo.data, todo.state, this)
+		);
 	}
 }
 

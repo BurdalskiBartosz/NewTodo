@@ -21,7 +21,6 @@ class TodoListView {
 	}
 
 	createHTML(todo) {
-		console.log(todo);
 		const wrapper = document.createElement("div");
 		wrapper.innerHTML = `<div class="todo">
 			<h3 class="todo-title">${todo.title}</h3>
@@ -31,6 +30,8 @@ class TodoListView {
 			</div>
 		</div>`;
 
+		const deleteButton = wrapper.querySelector(".delete-button");
+		deleteButton.addEventListener("click", () => todo.delete());
 		return wrapper;
 	}
 }

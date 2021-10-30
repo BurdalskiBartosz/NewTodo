@@ -1,16 +1,13 @@
 class Todo {
 	state = null;
-	data = {
-		title: "",
-		description: "",
-		dateToEnd: ""
-	};
 
-	constructor(data) {
+	constructor(data, state, parent) {
 		this.id = Math.random().toString(16).slice(2);
 		this.title = data.title;
 		this.description = data.description;
 		this.dateToEnd = data.dateToEnd;
+		this.state = state;
+		this.parent = parent;
 	}
 
 	edit(data) {
@@ -21,15 +18,15 @@ class Todo {
 	}
 
 	delete() {
-		this.state = "deleted";
+		this.parent.deleteTodo(this.id);
 	}
 
 	changeState() {
 		this.state = !this.state;
 	}
 
-	static create(data) {
-		return new Todo(data);
+	static create(data, state, parent) {
+		return new Todo(data, state, parent);
 	}
 }
 

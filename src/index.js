@@ -6,7 +6,6 @@ class Application {
 	todoList;
 
 	init() {
-		localStorage.removeItem("todos");
 		this.todoList = new TodoList();
 		this.todoList.init();
 		this.form = document.querySelector(".form");
