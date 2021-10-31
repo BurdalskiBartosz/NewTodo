@@ -5,7 +5,7 @@
 		"es6": true
 	},
 	"rules": {
-		"indent": [2, "tab"],
+		"indent": [2, "tab", { "SwitchCase": 1 }],
 		"eqeqeq": ["error", "always"],
 		"no-tabs": 0,
 		"no-console": "off"
