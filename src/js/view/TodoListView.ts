@@ -1,7 +1,15 @@
 class TodoListView {
+	private toDoListWrapper: HTMLDivElement;
+	private doneListWrapper: HTMLDivElement;
+	private doneTasksList;
+
 	constructor() {
-		this.toDoListWrapper = document.querySelector("#task-to-do");
-		this.doneListWrapper = document.querySelector("#done-task");
+		this.toDoListWrapper = document.querySelector(
+			"#task-to-do"
+		) as HTMLDivElement;
+		this.doneListWrapper = document.querySelector(
+			"#done-task"
+		) as HTMLDivElement;
 		this.doneTasksList = [];
 	}
 

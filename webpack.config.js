@@ -3,7 +3,7 @@ const ESLintPlugin = require("eslint-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-	entry: "./src/index.js",
+	entry: "./src/index.ts",
 	output: {
 		filename: "bundle.js",
 		path: path.resolve(__dirname, "dist")
@@ -15,7 +15,17 @@ module.exports = {
 			{
 				test: /\.m?js$/,
 				exclude: /(node_modules|bower_components)/,
-				use: ["babel-loader"]
+				use: {
+					loader: "babel-loader",
+					options: {
+						presets: ["@babel/preset-typescript"]
+					}
+				}
+			},
+			{
+				test: /\.tsx?$/,
+				use: "ts-loader",
+				exclude: /node_modules/
 			},
 			{
 				test: /\.s[ac]ss$/i,
@@ -32,6 +42,7 @@ module.exports = {
 	},
 	resolve: {
 		alias: {
+			extensions: [".tsx", ".ts", ".js"],
 			Src: path.resolve(__dirname, "src/")
 		}
 	},
