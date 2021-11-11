@@ -1,9 +1,0 @@
-{
-	"compilerOptions": {
-		"experimentalDecorators": true,
-		"baseUrl": ".",
-		"target": "esnext",
-		"module": "esnext"
-	},
-	"exclude": ["node_modules"]
-}

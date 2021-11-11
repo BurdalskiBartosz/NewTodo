@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ESLintPlugin = require("eslint-webpack-plugin");
+// const ESLintPlugin = require("eslint-webpack-plugin");
 const path = require("path");
 
 module.exports = {
@@ -23,7 +23,7 @@ module.exports = {
 				}
 			},
 			{
-				test: /\.tsx?$/,
+				test: /\.ts?$/,
 				use: "ts-loader",
 				exclude: /node_modules/
 			},
@@ -41,6 +41,7 @@ module.exports = {
 		]
 	},
 	resolve: {
+		extensions: [".ts", ".js"],
 		alias: {
 			extensions: [".tsx", ".ts", ".js"],
 			Src: path.resolve(__dirname, "src/")
@@ -49,9 +50,6 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: "./src/index.html"
-		}),
-		new ESLintPlugin({
-			fix: true
 		})
 	]
 };
