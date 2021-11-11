@@ -1,20 +1,17 @@
 import "./scss/index.scss";
 import { TodoList } from "./js/TodoList";
-
-interface InputsValue {
-	[key: string]: string;
-}
+import { TodoValues } from "./js/types";
 
 class Application {
 	private form: HTMLFormElement;
-	private todoList: TodoList;
+	private todoList!: TodoList;
 
 	constructor() {
 		this.form = document.querySelector(".form") as HTMLFormElement;
-		this.todoList = new TodoList();
 	}
 
 	init() {
+		this.todoList = new TodoList();
 		this.todoList.init();
 	}
 
@@ -24,23 +21,22 @@ class Application {
 
 	handleSubmitForm(e: Event) {
 		e.preventDefault();
-		const values = this.getValuesFromForm();
-		console.log(values);
-		this.addToList(values);
+		const todoValue = this.getValuesFromForm();
+		this.addToList(todoValue);
 	}
 
 	getValuesFromForm() {
 		const items = [...this.form.elements] as HTMLInputElement[];
-		const values: InputsValue = {};
+		const todoValue: TodoValues = {};
 		for (const item of items) {
 			if (!item.name) break;
-			else values[item.name] = item.value;
+			else todoValue[item.name] = item.value;
 		}
-		return values;
+		return todoValue;
 	}
 
-	addToList(values: InputsValue) {
-		this.todoList.addTodo(values);
+	addToList(todoValue: TodoValues) {
+		this.todoList.addTodo(todoValue);
 	}
 }
 const app = new Application();

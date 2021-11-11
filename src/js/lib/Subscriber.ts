@@ -1,17 +1,23 @@
+import { Observer } from "./Observer";
+
+type Data = number | string | object | undefined;
+
 class Subject {
+	private subscribers: Observer[];
+
 	constructor() {
 		this.subscribers = [];
 	}
 
-	registerSubscriber(subscriber) {
+	registerSubscriber(subscriber: Observer) {
 		this.subscribers.push(subscriber);
 	}
 
-	unregisterSubscriber(subscriber) {
+	unregisterSubscriber(subscriber: Observer) {
 		this.subscribers = this.subscribers.filter((obs) => obs !== subscriber);
 	}
 
-	notifySubscribers(data) {
+	notifySubscribers(data: Data) {
 		this.subscribers.forEach((obs) => obs.notify(data));
 	}
 }

@@ -1,6 +1,6 @@
-import { InputFactory } from "./lib/InputFactory/InputFactory";
-
 class Form {
+	public formElement!: HTMLFormElement;
+
 	get form() {
 		return this.formElement;
 	}
@@ -10,11 +10,12 @@ class Form {
 		this.formElement.classList.add("form");
 	}
 	createInput() {
-		const html = `<div class="input-wrapper">
+		const wrapper = document.createElement("div");
+		wrapper.innerHTML = `<div class="input-wrapper">
 			<label class="label" for="title">Tytuł zadania</label>
 			<input class="input" name="title" id="title" type="text" />
 		</div>`;
-		this.formElement.appendChild(html);
+		this.formElement.appendChild(wrapper);
 	}
 }
 
