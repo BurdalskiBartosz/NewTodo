@@ -15,7 +15,6 @@ class TodoListView {
 
 	create(todos: Todo[]) {
 		todos.forEach((todo) => {
-			console.log(todo);
 			this.addToList(todo);
 		});
 	}
