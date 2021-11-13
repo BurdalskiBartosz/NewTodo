@@ -1,14 +1,13 @@
+import { TodoStates } from "../enums";
+
 export type TodoValues = {
-	[key: string]: string;
+	id: string;
+	title: string;
+	description: string;
+	dateToEnd: string;
 };
 
 export type TodoJSON = {
 	data: TodoValues;
 	state: TodoStates;
 };
-
-export enum TodoStates {
-	todo = "TODO",
-	done = "DONE",
-	inProgress = "INPROGRESS"
-}
