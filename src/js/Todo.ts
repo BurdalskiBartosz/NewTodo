@@ -1,5 +1,7 @@
+import { InputTypes, TodoStates } from "./enums";
+import { Form } from "./lib/form";
 import { TodoList } from "./TodoList";
-import { TodoStates, TodoValues } from "./types";
+import { TodoValues } from "./types";
 
 class Todo {
 	public state: TodoStates;

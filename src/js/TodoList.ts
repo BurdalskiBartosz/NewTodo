@@ -1,5 +1,6 @@
+import { TodoStates } from "./enums";
 import { Todo } from "./Todo";
-import { TodoJSON, TodoStates, TodoValues } from "./types";
+import { TodoJSON, TodoValues } from "./types";
 import { TodoListView } from "./view/TodoListView";
 
 class TodoList {

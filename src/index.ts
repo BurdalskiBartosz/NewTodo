@@ -27,10 +27,15 @@ class Application {
 
 	getValuesFromForm() {
 		const items = [...this.form.elements] as HTMLInputElement[];
-		const todoValue: TodoValues = {};
+		const todoValue: TodoValues = {
+			id: "",
+			title: "",
+			description: "",
+			dateToEnd: ""
+		};
 		for (const item of items) {
 			if (!item.name) break;
-			else todoValue[item.name] = item.value;
+			else todoValue[item.name as keyof TodoValues] = item.value;
 		}
 		return todoValue;
 	}
