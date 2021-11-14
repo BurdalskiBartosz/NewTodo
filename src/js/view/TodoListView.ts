@@ -1,4 +1,4 @@
-import { Todo } from "../Todo";
+import type { Todo } from "../Todo";
 
 class TodoListView {
 	private toDoListWrapper: HTMLDivElement;
