@@ -1,27 +1,40 @@
-import { InputTypes } from "../../enums";
+import { Index, InputDataCreate } from "../../types";
 import { IInput } from "./InputFactory/IInput";
 import { InputFactory } from "./InputFactory/InputFactory";
 
-type Indexes<T> = {
-	[key: string]: T;
-};
-
 class Form {
-	public inputs!: IInput[];
+	public inputs: IInput[];
 
 	constructor() {
 		this.inputs = [];
 	}
-	addInput(type: InputTypes, name: string) {
-		const input = InputFactory.create(type, name);
+
+	addInput(data: InputDataCreate) {
+		const input = InputFactory.create(data);
 		this.inputs.push(input);
+		return this;
 	}
 
-	getValues() {
-		const test = this.inputs.reduce((previous, current) => {
-			return (previous[current.name] = current.value);
-		}, {});
-		console.log(test);
+	getValues(e: Event) {
+		e.preventDefault();
+		return this.inputs.reduce((previous, current) => {
+			previous[current.id] = current.value;
+			return previous;
+		}, {} as Index);
+	}
+
+	create(cb: Function) {
+		const form = document.createElement("form") as HTMLFormElement;
+		form.classList.add("form");
+		for (const input of this.inputs) {
+			input.create();
+			form.appendChild(input.element);
+		}
+		const button = document.createElement("button");
+		button.innerHTML = "Dodaj zadanie";
+		form.appendChild(button);
+		form.addEventListener("submit", (e) => cb(this.getValues(e)));
+		return form;
 	}
 }
 

@@ -1,4 +1,14 @@
-import { TodoStates } from "../enums";
+import { InputTypes, TodoStates } from "../enums";
+
+export type Index = {
+	[key: string]: string;
+};
+
+export type InputDataCreate = {
+	type: InputTypes;
+	id: string;
+	label: string;
+};
 
 export type TodoValues = {
 	id: string;

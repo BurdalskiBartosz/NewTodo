@@ -2,8 +2,8 @@ import { InputTypes } from "../../../enums";
 import { IInput } from "./IInput";
 
 class InputDate extends IInput {
-	constructor(name: string) {
-		super(name);
+	constructor(id: string, name: string) {
+		super(id, name);
 		this.type = InputTypes.date;
 	}
 }
