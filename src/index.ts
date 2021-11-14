@@ -1,43 +1,43 @@
 import "./scss/index.scss";
 import { TodoList } from "./js/TodoList";
 import { TodoValues } from "./js/types";
+import { Form } from "./js/lib/form";
+import { InputTypes } from "./js/enums";
 
 class Application {
-	private form: HTMLFormElement;
 	private todoList!: TodoList;
 
-	constructor() {
-		this.form = document.querySelector(".form") as HTMLFormElement;
-	}
+	constructor() {}
 
 	init() {
 		this.todoList = new TodoList();
 		this.todoList.init();
 	}
 
-	addListeners() {
-		this.form.addEventListener("submit", this.handleSubmitForm.bind(this));
+	createForm() {
+		const form = new Form();
+		const formWrapper = document.querySelector(".form-wrapper");
+		form.addInput({
+			type: InputTypes.text,
+			id: "title",
+			label: "Tytuł zadania"
+		})
+			.addInput({
+				type: InputTypes.textarea,
+				id: "description",
+				label: "Treść zadania"
+			})
+			.addInput({
+				type: InputTypes.date,
+				id: "dateToEnd",
+				label: "Data deadlinu"
+			});
+		const formData = form.create(this.handleSubmitForm.bind(this));
+		formWrapper?.appendChild(formData);
 	}
 
-	handleSubmitForm(e: Event) {
-		e.preventDefault();
-		const todoValue = this.getValuesFromForm();
-		this.addToList(todoValue);
-	}
-
-	getValuesFromForm() {
-		const items = [...this.form.elements] as HTMLInputElement[];
-		const todoValue: TodoValues = {
-			id: "",
-			title: "",
-			description: "",
-			dateToEnd: ""
-		};
-		for (const item of items) {
-			if (!item.name) break;
-			else todoValue[item.name as keyof TodoValues] = item.value;
-		}
-		return todoValue;
+	handleSubmitForm(values: TodoValues) {
+		this.addToList(values);
 	}
 
 	addToList(todoValue: TodoValues) {
@@ -46,4 +46,4 @@ class Application {
 }
 const app = new Application();
 app.init();
-app.addListeners();
+app.createForm();
