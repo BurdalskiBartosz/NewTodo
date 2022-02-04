@@ -1,11 +1,11 @@
 import { InputTypes } from "../../../enums";
-import { InputDataCreate } from "../../../types";
+import { tInputDataCreate } from "../../../types";
 import { InputDate } from "./InputDate";
 import { InputText } from "./InputText";
 import { InputTextarea } from "./InputTextarea";
 
 class InputFactory {
-	static create(data: InputDataCreate) {
+	static create(data: tInputDataCreate) {
 		switch (data.type) {
 			case InputTypes.text:
 				return new InputText(data.id, data.label);

@@ -1,23 +1,23 @@
 import { InputTypes, TodoStates } from "../enums";
 
-export type Index = {
+export type tIndex = {
 	[key: string]: string;
 };
 
-export type InputDataCreate = {
+export type tInputDataCreate = {
 	type: InputTypes;
 	id: string;
 	label: string;
 };
 
-export type TodoValues = {
+export type tTodoValues = {
 	id: string;
 	title: string;
 	description: string;
 	dateToEnd: string;
 };
 
-export type TodoJSON = {
-	data: TodoValues;
+export type tTodoJSON = {
+	data: tTodoValues;
 	state: TodoStates;
 };

@@ -1,6 +1,6 @@
 import { TodoStates } from "./enums";
 import { Todo } from "./Todo";
-import { TodoJSON, TodoValues } from "./types";
+import { tTodoJSON, tTodoValues } from "./types";
 import { TodoListView } from "./view/TodoListView";
 
 class TodoList {
@@ -25,7 +25,7 @@ class TodoList {
 		this.todoListView.create(this.todos);
 	}
 
-	addTodo(data: TodoValues) {
+	addTodo(data: tTodoValues) {
 		const todo: Todo = Todo.create(data, TodoStates.todo, this);
 		this.todos.push(todo);
 		this.saveTodoToLocalStorage();
@@ -51,7 +51,7 @@ class TodoList {
 		if (!this.isTodosLocalStorageExists) return;
 		const todosString = localStorage.getItem("todos") as string;
 		const todos = JSON.parse(todosString);
-		this.todos = todos.map((todo: TodoJSON) =>
+		this.todos = todos.map((todo: tTodoJSON) =>
 			Todo.create(todo.data, todo.state, this)
 		);
 	}
