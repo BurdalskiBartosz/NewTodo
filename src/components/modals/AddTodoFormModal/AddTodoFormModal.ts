@@ -1,8 +1,8 @@
-import { tTodoValues } from "../js/types";
-import { Form } from "../js/lib/form";
-import { InputTypes } from "../js/enums";
-import { Modal } from "../js/lib/modal";
-import { TodoList } from "../js/TodoList";
+import { tTodoValues } from "../../../js/types";
+import { Form } from "../../../js/lib/form/Form";
+import { InputTypes } from "../../../js/enums";
+import { Modal } from "../../../js/lib/modal";
+import { TodoList } from "../../../js/TodoList";
 
 class AddTodoFormModal {
 	private todoList!: TodoList;

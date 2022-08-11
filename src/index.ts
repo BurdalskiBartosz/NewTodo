@@ -1,6 +1,6 @@
 import "./scss/index.scss";
 import { TodoList } from "./js/TodoList";
-import { AddTodoFormModal } from "./components/AddTodoFormModal";
+import { AddTodoFormModal } from "./components/modals/AddTodoFormModal/AddTodoFormModal";
 
 class Application {
 	private todoList!: TodoList;
